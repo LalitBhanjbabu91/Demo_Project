@@ -14,7 +14,6 @@ public class ErrorResponse {
         this.error = error;
         this.message = message;
     }
-
     // Getters and Setters
     public LocalDateTime getTimestamp() { return timestamp; }
     public int getStatus() { return status; }
