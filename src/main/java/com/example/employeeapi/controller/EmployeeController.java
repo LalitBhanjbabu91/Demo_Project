@@ -3,9 +3,13 @@ package com.example.employeeapi.controller; // <-- FIX THIS LINE
 import com.example.employeeapi.entity.Employee; // <-- FIX THIS LINE
 import com.example.employeeapi.service.EmployeeService; // <-- FIX THIS LINE
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 
@@ -17,8 +21,8 @@ public class EmployeeController {
     private EmployeeService service;
 
     @GetMapping
-    public ResponseEntity<List<Employee>> getAll() {
-        return ResponseEntity.ok(service.getAllEmployees());
+    public ResponseEntity<List<Employee>> getAll(@PageableDefault(size = 10, sort = "id", direction =Sort.Direction.DESC) Pageable pageable) {
+        return ResponseEntity.ok(service.getAllEmployees(pageable));
     }
 
     @PostMapping

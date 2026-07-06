@@ -3,6 +3,7 @@ package com.example.employeeapi.service;
 import com.example.employeeapi.entity.Employee;
 import com.example.employeeapi.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import com.example.employeeapi.repository.EmployeeRepository;
 
@@ -14,7 +15,7 @@ public class EmployeeService {
     @Autowired
     private EmployeeRepository repository;
 
-    public List<Employee> getAllEmployees() {
+    public List<Employee> getAllEmployees(Pageable pageable) {
         return repository.findAll();
     }
 
