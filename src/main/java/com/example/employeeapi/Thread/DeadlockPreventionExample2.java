@@ -1,8 +1,6 @@
 package com.example.employeeapi.Thread;
 
-import org.apache.tomcat.util.http.parser.TE;
-
-public class DeadlockPreventionExpample2 {
+public class DeadlockPreventionExample2 {
 
       Account acc1 = new Account("A101", 10000);
       Account acc2 = new Account("A102", 8000);
@@ -31,7 +29,7 @@ public class DeadlockPreventionExpample2 {
 
     static void main() throws InterruptedException {
 
-        DeadlockPreventionExpample2 obj = new DeadlockPreventionExpample2();
+        DeadlockPreventionExample2 obj = new DeadlockPreventionExample2();
         obj.t1.start();
         obj.t2.start();
         obj.t3.start();
