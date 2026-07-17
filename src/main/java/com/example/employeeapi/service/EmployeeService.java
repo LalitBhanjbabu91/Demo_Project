@@ -32,4 +32,11 @@ public class EmployeeService {
                 })
                 .orElseThrow(() -> new ResourceNotFoundException("Employee not found with ID: " + id));
     }
+
+    public void deleteEmployee(Long id){
+        if(!repository.existsById(id)){
+            throw new ResourceNotFoundException("Employee not found with id: "+id);
+        }
+        repository.deleteById(id);
+    }
 }

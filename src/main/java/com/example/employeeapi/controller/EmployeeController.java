@@ -1,6 +1,7 @@
 package com.example.employeeapi.controller; // <-- FIX THIS LINE
 
 import com.example.employeeapi.entity.Employee; // <-- FIX THIS LINE
+import com.example.employeeapi.repository.EmployeeRepository;
 import com.example.employeeapi.service.EmployeeService; // <-- FIX THIS LINE
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -35,5 +36,11 @@ public class EmployeeController {
     public ResponseEntity<Employee> update(@PathVariable Long id, @RequestBody Employee details) {
         Employee updated = service.updateEmployee(id, details);
         return ResponseEntity.ok(updated);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> delete(@PathVariable Long id){
+        service.deleteEmployee(id);
+        return ResponseEntity.ok("Employee deleted successfully by id: "+id);
     }
 }
